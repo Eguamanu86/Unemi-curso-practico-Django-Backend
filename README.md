@@ -23,3 +23,7 @@ Plantilla Inicial Docker, python 3.10 y Django 4.
 5. Abre el navegador e ingresa:
 
         http://localhost:8001/
+
+## Levantando el Servidor Django:
+
+![Optional Text](./capturas/run-server-django.PNG)
