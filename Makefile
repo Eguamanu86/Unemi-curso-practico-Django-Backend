@@ -29,19 +29,19 @@ logs:
 	docker-compose logs -f django
 
 startapp:
-	docker exec -it dev-django-prototype python manage.py startapp $(app)
+	docker exec -it dev-django-unemi python manage.py startapp $(app)
 
 makemigrations:
-	docker exec -it dev-django-prototype python manage.py makemigrations
+	docker exec -it dev-django-unemi python manage.py makemigrations
 
 migrate:
-	docker exec -it dev-django-prototype python manage.py migrate
+	docker exec -it dev-django-unemi python manage.py migrate
 
 createsuperuser:
-	docker exec -it dev-django-prototype python manage.py createsuperuser
+	docker exec -it dev-django-unemi python manage.py createsuperuser
 
 diagram:
-	docker exec -it dev-django-prototype python manage.py graph_models -a -o ./diagrams/diagram.png
+	docker exec -it dev-django-unemi python manage.py graph_models -a -o ./diagrams/diagram.png
 
 diagram-grouped:
-	docker exec -it dev-django-prototype python manage.py graph_models -a -g -o ./diagrams/diagram-grouped.png
+	docker exec -it dev-django-unemi python manage.py graph_models -a -g -o ./diagrams/diagram-grouped.png
