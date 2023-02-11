@@ -7,7 +7,7 @@ Plantilla Inicial Docker, python 3.10 y Django 4.
 
 2. Ejecutar los siguientes pasos:
 
-        docker-compose build
+        docker-compose build --no-cache
         docker-compose run --rm django django-admin startproject core .
 
 3. Habilite las siguientes lineas en archivo `django-backend/Dockerfile` linea [30,31]:
