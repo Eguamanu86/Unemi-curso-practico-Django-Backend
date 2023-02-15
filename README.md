@@ -27,3 +27,20 @@ Plantilla Inicial Docker, python 3.10 y Django 4.
 ## Levantando el Servidor Django:
 
 ![Optional Text](./capturas/run-server-django.PNG)
+
+
+## En caso de no utilizar Docker, podéis utilizar entorno virtual venv
+
+        python -m venv venv
+        source venv/Scripts/activate
+        python -m pip install --upgrade pip
+        pip install -r venv-requirements.txt
+
+## Levantar servicio Django dentro de entorno virtual venv
+        cd django-backend/
+        set -a; source ../.env; set +a
+        python manage.py runserver 0.0.0.0:8001
+        Abrir navegador: http://localhost:8001/
+
+## Levantar servicio Django dentro de entorno virtual venv, con comando Make
+        Make runserver
