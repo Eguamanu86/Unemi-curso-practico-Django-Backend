@@ -7,7 +7,7 @@ services:
     container_name: dev-django-unemi
     restart: always
     ports:
-      - 0.0.0.0:8009:8000 ## externo : interno
+      - 0.0.0.0:8001:8000 ## externo : interno
       - 0.0.0.0:3009:3000
     env_file:
       - ./.env
