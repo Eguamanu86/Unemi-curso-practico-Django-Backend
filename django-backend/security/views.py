@@ -9,7 +9,7 @@ class LoginPageView(TemplateView):
 
     def post(self, request, *args, **kwargs):
         status_code = None
-        data = {'resp': False}
+        data = {'resp': False, 'error': None}
         try:
             # extraer datos del request metodo: POST
             username = request.POST['username']
@@ -25,6 +25,12 @@ class LoginPageView(TemplateView):
                     login(request, user)
                     status_code = 200
                     data['resp'] = True
+                    data['user'] = {
+                        "username": user.username,
+                        "email" : user.email,
+                        "names": f"{user.first_name} {user.last_name}",
+                        "status": user.is_active
+                    }
                     # retornamos la respuesta, con status 200: OK
                     return JsonResponse(data, status=status_code)
                 else:

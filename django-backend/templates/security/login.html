@@ -75,7 +75,6 @@
 
     <main class="form-signin">
         <form>
-            <img class="mb-4" src="./bootstrap-logo.svg" alt="" width="72" height="57">
             <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
             <div class="p-1" style="min-height: 1.5rem">
@@ -113,23 +112,32 @@
 
                  event.preventDefault();
 
+                 $('#id-loading-spinner').removeClass('d-none')
+                 $('#id-alert-error').addClass('d-none')
+                 $('#id-error-message').html('')
+
                  const formdata = new FormData(event.target)
                  // covertimos los datos en objeto key: values (diccionario)
                  const data = Object.fromEntries(formdata.entries())
 
+                 //Async JavaScript XML
                  $.ajax({ // call async hacia un servicio API
                      url: '/security/login/',
                      data: data,
                      method: 'POST',
                      dataType: 'json',
                  }).done(function (response) { /// respuesta OK: 200, 201 status HTTP
+                    $('#id-loading-spinner').addClass('d-none')
                      console.log("usuario:", response);
                      if(response.resp){
-                        window.location.href = 'index.html';
+                        alert("Hola " + response.user.names)
+                        window.location.href = '/'
                      }
                 }).fail(function (jqXHR, textStatus) { /// respuesta FAIL: 500, 404 status HTTP
-                    console.log(jqXHR.responseJSON)
-                    console.log(textStatus)
+                    $('#id-loading-spinner').addClass('d-none')
+                    const messageError = jqXHR.responseJSON.error
+                    $('#id-alert-error').removeClass('d-none')
+                    $('#id-error-message').html(messageError)
                 })
              })
          });
