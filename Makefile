@@ -47,4 +47,4 @@ diagram-grouped:
 	docker exec -it dev-django-unemi python manage.py graph_models -a -g -o ./diagrams/diagram-grouped.png
 
 runserver:
-	cd django-backend && set -a; source ../.env; set +a && python manage.py runserver 0.0.0.0:8001
+	source venv/Scripts/activate && cd django-backend && set -a; source ../.env; set +a && python manage.py runserver 0.0.0.0:8001
