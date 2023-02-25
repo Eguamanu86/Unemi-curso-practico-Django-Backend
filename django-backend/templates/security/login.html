@@ -77,6 +77,14 @@
         <form>
             <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
+            <div class="row-form">
+                <select class="form-select" id="id-select-type-request" required>
+                   <option value="">----</option>
+                   <option value="AJAX">Ajax</option>
+                   <option value="FETCH">Fetch</option>
+                </select>
+            </div>
+
             <div class="p-1" style="min-height: 1.5rem">
                 <div id="id-alert-error" class="alert alert-danger p-1 text-center d-none" role="alert">
                     <i class="fa-solid fa-triangle-exclamation"></i>
@@ -106,41 +114,68 @@
 
     <script>
 
-         $(function () {
+        $(function () {
 
-             $('form').on('submit', (event) => {
+            $('form').on('submit', async(event) => {
 
-                 event.preventDefault();
+                event.preventDefault();
 
-                 $('#id-loading-spinner').removeClass('d-none')
-                 $('#id-alert-error').addClass('d-none')
-                 $('#id-error-message').html('')
+                $('#id-loading-spinner').removeClass('d-none')
+                $('#id-alert-error').addClass('d-none')
+                $('#id-error-message').html('')
 
-                 const formdata = new FormData(event.target)
+                const formdata = new FormData(event.target)
                  // covertimos los datos en objeto key: values (diccionario)
-                 const data = Object.fromEntries(formdata.entries())
+                const data = Object.fromEntries(formdata.entries())
 
-                 //Async JavaScript XML
-                 $.ajax({ // call async hacia un servicio API
-                     url: '/security/login/',
-                     data: data,
-                     method: 'POST',
-                     dataType: 'json',
-                 }).done(function (response) { /// respuesta OK: 200, 201 status HTTP
+                const typeRequest = $('#id-select-type-request').val()
+
+                if (typeRequest === 'AJAX'){
+                    //Async JavaScript XML
+                    $.ajax({ // call async hacia un servicio API
+                        url: '/security/login/',
+                        data: data,
+                        method: 'POST',
+                        dataType: 'json',
+                    }).done(function (response) { /// respuesta OK: 200, 201 status HTTP
+                        $('#id-loading-spinner').addClass('d-none')
+                        console.log("usuario:", response);
+                        if(response.resp){
+                            window.location.href = '/'
+                        }
+                    }).fail(function (jqXHR, textStatus) { /// respuesta FAIL: 500, 404 status HTTP
+                        $('#id-loading-spinner').addClass('d-none')
+                        const messageError = jqXHR.responseJSON.error
+                        $('#id-alert-error').removeClass('d-none')
+                        $('#id-error-message').html(messageError)
+                    })
+
+                }else{
+                    // FUNCION FETCH DE JAVASCRIPT
+                    const response = await fetch('/security/login/', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(data)
+                    })
+
                     $('#id-loading-spinner').addClass('d-none')
-                     console.log("usuario:", response);
-                     if(response.resp){
-                        alert("Hola " + response.user.names)
+
+                    if (response.ok) {
+
+                        const userData = await response.json()
+                        console.log(userData)
                         window.location.href = '/'
-                     }
-                }).fail(function (jqXHR, textStatus) { /// respuesta FAIL: 500, 404 status HTTP
-                    $('#id-loading-spinner').addClass('d-none')
-                    const messageError = jqXHR.responseJSON.error
-                    $('#id-alert-error').removeClass('d-none')
-                    $('#id-error-message').html(messageError)
-                })
-             })
-         });
+
+                    }else{
+
+                        const jsonMessage = await response.json()
+                        $('#id-alert-error').removeClass('d-none')
+                        $('#id-error-message').html(jsonMessage.error)
+
+                    }
+                }
+            })
+        });
 
     </script>
 

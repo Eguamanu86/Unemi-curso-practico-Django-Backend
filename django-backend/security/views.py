@@ -3,6 +3,7 @@ from django.views.generic import TemplateView
 from django.http import JsonResponse
 from django.contrib.auth import authenticate, login
 from django.views import View
+import json
 
 class LoginPageView(TemplateView):
     template_name = 'security/login.html'
@@ -11,9 +12,14 @@ class LoginPageView(TemplateView):
         status_code = None
         data = {'resp': False, 'error': None}
         try:
-            # extraer datos del request metodo: POST
-            username = request.POST['username']
-            password = request.POST['password']
+
+            if 'username' in request.POST:
+                json_data = request.POST
+            else:
+                json_data = json.loads(request.body)
+
+            username = json_data['username']
+            password = json_data['password']
             # autenticar si el usuario y password es correcto. retorna un objeto usuario
             user = authenticate(username=username,password=password)
 
@@ -25,7 +31,7 @@ class LoginPageView(TemplateView):
                     login(request, user)
                     status_code = 200
                     data['resp'] = True
-                    data['user'] = {
+                    data['`user`'] = {
                         "username": user.username,
                         "email" : user.email,
                         "names": f"{user.first_name} {user.last_name}",
