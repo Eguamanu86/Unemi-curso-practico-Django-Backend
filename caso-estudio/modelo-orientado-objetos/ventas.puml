@@ -1,0 +1,72 @@
+@startuml
+class Categoria{
+    codigo: string
+    nombre: string
+}
+
+class Producto{
+    codigo: string
+    nombre: string
+    stockDisponible: integer
+    stockMinimo: integer
+    precio: numeric
+}
+
+class Cliente{
+    cedula: string
+    nombres: string
+    direccion: string
+    ciudad: string
+    telefono: string
+}
+
+class TipoPago{
+    codigo: string
+    monto: numeric
+}
+
+class PagoContado{
+}
+
+class PagoCredito{
+}
+
+class Venta{
+    numero: string
+    fecha: datetime
+    tipoPago: TipoPago
+    subtotal: numeric
+    impuesto: numeric
+    total: numeric
+}
+
+
+class VentaDetalle{
+    producto: Producto
+    cantidad: integer
+    precio: numeric
+    subtotal: numeric
+    impuesto: numeric
+    total: numeric
+}
+
+
+Producto --> Categoria
+
+TipoPago <|-- PagoContado
+TipoPago <|-- PagoCredito
+
+
+Venta "0..*"--> "1" Cliente
+Venta --> TipoPago
+
+VentaDetalle --> Producto
+Venta "1" --o "1..*" VentaDetalle
+
+
+
+
+
+
+
+@enduml
