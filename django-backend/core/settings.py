@@ -50,7 +50,8 @@ THIRD_PARTY_APPS = [
 
 LOCAL_APPS = [
     'security',
-    'inventario'
+    'inventario',
+    'cliente'
 ]
 
 INSTALLED_APPS = INSTALLED_APPS + THIRD_PARTY_APPS + LOCAL_APPS
