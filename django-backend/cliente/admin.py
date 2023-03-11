@@ -5,4 +5,20 @@ from .models import *
 
 # Register your models here.
 admin.site.register(ClienteGrupo)
-admin.site.register(Cliente)
+
+class ClienteAdmin(admin.ModelAdmin):
+    list_display = (
+        'cedula',
+        'nombres',
+        'grupo',
+        'ciudad',
+        'estado'
+    )
+    list_per_page = 20
+    search_fields = ('cedula','nombres')
+    list_filter = (
+        'grupo',
+        'estado'
+    )
+
+admin.site.register(Cliente, ClienteAdmin)

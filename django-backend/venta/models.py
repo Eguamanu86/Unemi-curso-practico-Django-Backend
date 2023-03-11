@@ -1,5 +1,6 @@
 from django.db import models
 from inventario.models import Producto
+from cliente.models import Cliente
 # Create your models here.
 class TipoPago(models.Model):
     codigo = models.CharField(max_length=10, verbose_name="Codigo", blank=True, null=True)
@@ -16,6 +17,7 @@ class TipoPago(models.Model):
 
 
 class Venta(models.Model):
+    cliente = models.ForeignKey(Cliente, on_delete=models.PROTECT, blank=True, null=True)
     tipo_pago = models.ForeignKey(TipoPago, on_delete=models.PROTECT, blank=True, null=True)
     numero = models.CharField(verbose_name="Número", max_length=10)
     fecha = models.DateTimeField(blank=True, null=True)
@@ -27,7 +29,7 @@ class Venta(models.Model):
     created_by = models.CharField(max_length=100, blank=True, null=True, editable=False)
     updated_at = models.DateTimeField(auto_now=True, null=True)
     update_by = models.CharField(max_length=100, blank=True, null=True, editable=False)
-    deleted_at = models.DateTimeField(blank=True, null=True)
+    deleted_at = models.DateTimeField(blank=True, null=True, editable=False)
     deleted_by = models.CharField(max_length=100, blank=True, null=True, editable=False)
 
 
