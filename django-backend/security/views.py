@@ -1,5 +1,5 @@
 from django.views.generic import TemplateView
-
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import JsonResponse
 from django.contrib.auth import authenticate, login
 from django.views import View
@@ -51,3 +51,9 @@ class LoginPageView(TemplateView):
             status_code = 500
 
         return JsonResponse(data, status=status_code)
+
+# Create your views here.
+class InicioTemplate(LoginRequiredMixin, TemplateView):
+    login_url = '/security/login'
+    redirect_field_name = 'redirect_to'
+    template_name = 'security/index.html'

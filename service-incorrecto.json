@@ -1,0 +1,179 @@
+{
+    "order": {
+        "id": 10685917,
+        "type": "delivery",
+        "price": 25000,
+        "weight": 7.5,
+        "product": "BEBIDAS DE KOMBUCHA FRAGIL-FRAGIL-FRAGIL-FRAGIL",
+        "created_at": "2021-08-23T10:17:38",
+        "imported_id": "23820211",
+        "contract_type": "distribucion",
+        "deadline_date": null,
+        "tracking_number": "980696734",
+        "has_shipping_insurance": null,
+        "first_in_carrier_movement": null
+    },
+    "origin": {
+        "code": "Cuba3366",
+        "type": "warehouse",
+        "contact": {
+            "name": "Contacto",
+            "email": null,
+            "phone": null
+        },
+        "place_id": 333,
+        "place_code": "13127",
+        "place_name": "Recoleta",
+        "information": "",
+        "full_address": "Cuba 3366"
+    },
+    "source": "Excel",
+    "status": {
+        "date": "2023-01-30T10:48:10",
+        "info": "Etiqueta impresa",
+        "status_id": 26,
+        "status_code": "CREATED",
+        "status_name": "Listo para despacho - Impreso"
+    },
+    "carrier": {
+        "id": 30,
+        "code": "SKN",
+        "name": "STARKEN",
+        "service": "priority",
+        "attributes": {
+            "name": "attributes",
+            "value": null
+        },
+        "carrier_service_id": 40,
+        "carrier_configuration_id": 292
+    },
+    "shipper": {
+        "id": 2473,
+        "code": "DRKOMBU",
+        "name": "Dr. Kombú Kombucha",
+        "country": "CL"
+    },
+    "extra_data": {
+        "label": {
+            "url": "https://storage.googleapis.com/carrier-labels/202301/10685917/1414295-label.pdf",
+            "labels": {
+                "PDF": {
+                    "raw": null,
+                    "url": "https://storage.googleapis.com/carrier-labels/202301/10685917/1414295-label.pdf"
+                },
+                "ZPL": null
+            }
+        },
+        "volume": 1,
+        "pudo_id": null,
+        "dimensions": {
+            "width": 1,
+            "height": 1,
+            "length": 1
+        },
+        "n_packages": 1,
+        "transit_days": null,
+        "warehouse_id": 9782,
+        "contract_type": "distribucion",
+        "creation_logs": {
+            "stackDriver_link": [
+                "https://console.cloud.google.com/logs/query;pinnedLogId=2023-01-30T01:43;query=logName%3D%22projects%2Ftokyo-ms%2Flogs%2Fakihabara%22%20jsonPayload.operation.id%3D%2210685917%22;timeRange=PT1H?project=tokyo-ms"
+            ],
+            "bucket_creation_url": [
+                "https://storage.googleapis.com/carrier-deliveries/202301/10685917/1414295-creation.json"
+            ]
+        },
+        "deadline_date": null,
+        "delivery_proof": null,
+        "estimate_price": null,
+        "amount_to_collect": null,
+        "delivery_status_logs": {
+            "id": 153076857,
+            "user": {
+                "email": "info@kombu.cl"
+            },
+            "comment": "Etiqueta impresa",
+            "user_id": 3964,
+            "internal": 0,
+            "json_data": "\"\"",
+            "changed_by": null,
+            "created_at": "2023-01-30T10:48:15",
+            "deleted_at": null,
+            "updated_at": "2023-01-30T10:48:15",
+            "delivery_id": 10685917,
+            "delivery_status_id": 26,
+            "created_country_timezone": "2023-01-30T10:48:10",
+            "created_without_timezone": "2023-01-30T13:48:10",
+            "delivery_carrier_status_id": null,
+            "delivery_carrier_status_log_id": ""
+        },
+        "has_shipping_insurance": null,
+        "delivery_label_print_id": null
+    },
+    "destination": {
+        "code": "13301",
+        "type": "home",
+        "contact": {
+            "name": "Ingrid Mabel Vallecilla",
+            "email": "mabelcita_84@hotmail.com",
+            "phone": "945269841"
+        },
+        "latitude": null,
+        "place_id": 129,
+        "zip_code": null,
+        "longitude": null,
+        "place_code": "13301",
+        "place_name": "Colina",
+        "information": "",
+        "full_address": "José Rabat 9620, Condominio Aguas Clara, Casa 35 Pie De Monte"
+    },
+    "extra_fields": {
+        "service": {
+            "name": "service",
+            "value": "normal"
+        },
+        "barcodes": {
+            "name": "barcodes",
+            "value": null
+        },
+        "parent_id": {
+            "name": "parent_id",
+            "value": 10
+        },
+        "attributes": {
+            "name": "attributes",
+            "value": null
+        },
+        "carrier_type": {
+            "name": "carrier_type",
+            "value": "parcel"
+        },
+        "carrier_extras": {
+            "name": "carrier_extras",
+            "value": {
+                "address_customization": {
+                    "name_to": "COLINA",
+                    "customization": {
+                        "ciudad": "Santiago"
+                    }
+                }
+            }
+        },
+        "url_live_tracking": {
+            "name": "url_live_tracking",
+            "value": null
+        },
+        "secondary_reference": {
+            "name": "secondary_reference",
+            "value": null
+        }
+    },
+    "organization": {
+        "id": 2473,
+        "code": "DRKOMBU",
+        "name": "Dr. Kombú Kombucha",
+        "type": "Seller",
+        "country": "CL"
+    },
+    "satoshi_modified": true
+}

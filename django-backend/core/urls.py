@@ -15,8 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from security.views import InicioTemplate
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', InicioTemplate.as_view()),
     path('security/', include('security.urls')),
+    path('security/', include('security.urls')),
+    path('inventario/', include('inventario.urls')),
 ]

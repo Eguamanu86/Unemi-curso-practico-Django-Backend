@@ -7,6 +7,22 @@ from .models import *
 admin.site.register(ClienteGrupo)
 
 class ClienteAdmin(admin.ModelAdmin):
+
+    fieldsets = [
+        ('Datos Personales', {
+            'fields': [
+                ('cedula',),
+                ('nombre', 'apellido'),
+                ('grupo', 'estado')
+            ]
+        }),
+        ('Datos de direccion', {
+            'fields': [
+                ('direccion','ciudad')
+            ]
+        })
+    ]
+
     list_display = (
         'cedula',
         'nombres',
